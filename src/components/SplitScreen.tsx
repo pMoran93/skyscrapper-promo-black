@@ -3,19 +3,19 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const panels = [
   {
-    image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05',
-    title: 'The Journey',
-    description: 'Through untamed wilderness'
+    image: '/src/assets/building_6.png',
+    title: "See",
+    description: "See Nashville like never before from the heights of Eterna Tower Nashville"
   },
   {
-    image: 'https://images.unsplash.com/photo-1447684808650-354ae64db5b8',
-    title: 'The Discovery',
-    description: 'Finding hidden gems'
+    image: '/src/assets/building_1.png',
+    title: "Through Our",
+    description: "With panoramic windows in each residence, enjoy spectacular views that encompass the city's main points of interest, the Cumberland River and beyond"
   },
   {
-    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
-    title: 'The Wonder',
-    description: 'Nature\'s masterpiece'
+    image: '/src/assets/building_4.png',
+    title: "View",
+    description: "This skyscraper redefines perspectives, making every sunrise and sunset a unique experience"
   }
 ];
 

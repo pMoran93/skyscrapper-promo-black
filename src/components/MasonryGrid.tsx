@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const images = [
   {
@@ -99,6 +100,55 @@ export function MasonryGrid() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
             onClick={() => setSelectedImage(null)}
           >
+            {/* Left Arrow */}
+            <div className="absolute left-40 top-1/2 -translate-y-1/2">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-50 group-hover:opacity-75 blur transition duration-1000"></div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage((prev) => 
+                      prev === 0 ? images.length - 1 : prev - 1
+                    );
+                  }}
+                  className="relative p-2 bg-black rounded-full text-white/80 hover:text-white transition-colors"
+                >
+                  <ChevronLeft className="w-8 h-8" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Arrow */}
+            <div className="absolute right-40 top-1/2 -translate-y-1/2">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-50 group-hover:opacity-75 blur transition duration-1000"></div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage((prev) => 
+                      prev === images.length - 1 ? 0 : prev + 1
+                    );
+                  }}
+                  className="relative p-2 bg-black rounded-full text-white/80 hover:text-white transition-colors"
+                >
+                  <ChevronRight className="w-8 h-8" />
+                </button>
+              </div>
+            </div>
+
+            {/* Close Button */}
+            <div className="absolute top-20 right-20">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-50 group-hover:opacity-75 blur transition duration-1000"></div>
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="relative p-2 bg-black rounded-full text-white/80 hover:text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -119,12 +169,6 @@ export function MasonryGrid() {
                   {images[selectedImage].description}
                 </p>
               </div>
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white text-4xl"
-              >
-                ×
-              </button>
             </motion.div>
           </motion.div>
         )}

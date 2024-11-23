@@ -4,18 +4,18 @@ import { motion } from 'framer-motion';
 const layers = [
   {
     image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
-    title: 'Human Connection',
-    text: 'Capturing the essence of humanity through the lens'
+    title: 'Living Room',
+    text: 'Discover the essence of modern luxury in every corner of Eterna Tower Nashville, located at 1201 Demonbreun Street, Nashville, TN 37203'
   },
   {
     image: 'https://images.unsplash.com/photo-1447684808650-354ae64db5b8',
-    title: 'Urban Stories',
-    text: 'Finding beauty in the chaos of city life'
+    title: 'Master Bedroom',
+    text: 'Designed to redefine comfort and exclusivity, our residences offer spacious spaces, top quality finishes and unparalleled views of the Nashville skyline'
   },
   {
     image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05',
-    title: 'Natural Wonder',
-    text: 'Exploring the untamed beauty of our world'
+    title: 'Bathroom',
+    text: 'From cozy studios to majestic penthouses, these residences adapt to the highest standards of living contemporary'
   }
 ];
 
@@ -28,8 +28,9 @@ export function OverlappingLayers() {
         transition={{ duration: 0.8 }}
         className="text-5xl font-bold text-center mb-24"
       >
-        Depth in Dimensions
+        Residences
       </motion.h2>
+      
 
       <div className="max-w-7xl mx-auto relative h-[150vh]">
         {layers.map((layer, index) => (
