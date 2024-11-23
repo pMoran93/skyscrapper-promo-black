@@ -55,9 +55,8 @@ export function Carousel() {
         className="absolute top-8 left-8 z-20"
       >
         <h1 className="text-6xl font-bold text-white mb-2">
-          Skyline Living
+          Eterna Tower Nashville
         </h1>
-        <p className="text-xl text-white/80">Elevate Your Lifestyle</p>
       </motion.div>
 
       <Swiper
