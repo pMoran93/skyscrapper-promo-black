@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
@@ -9,22 +9,22 @@ import 'swiper/css/pagination';
 
 const images = [
   {
-    url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
-    title: "Mountain Majesty",
-    description: "Capturing the raw beauty of nature's peaks",
-    location: "Swiss Alps"
+    image: '/src/assets/building_5.png',
+    title: "Luxury Living Redefined",
+    description: "Experience unparalleled elegance in the heart of the city",
+    location: "Downtown Financial District"
   },
   {
-    url: 'https://images.unsplash.com/photo-1447684808650-354ae64db5b8',
-    title: "Ocean's Whisper",
-    description: "Where waves meet the endless horizon",
-    location: "Pacific Coast"
+    image: '/src/assets/building_4.png',
+    title: "Sky-High Sophistication",
+    description: "Where luxury meets breathtaking panoramic views",
+    location: "Prime Urban Location"
   },
   {
-    url: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05',
-    title: "Forest Dreams",
-    description: "Light filtering through ancient trees",
-    location: "Redwood National Park"
+    image: '/src/assets/building_2.png',
+    title: "Elite Urban Residences",
+    description: "Premium apartments designed for discerning professionals",
+    location: "Business District"
   }
 ];
 
@@ -55,14 +55,14 @@ export function Carousel() {
         className="absolute top-8 left-8 z-20"
       >
         <h1 className="text-6xl font-bold text-white mb-2">
-          Through My Lens
+          Skyline Living
         </h1>
-        <p className="text-xl text-white/80">A Visual Journey</p>
+        <p className="text-xl text-white/80">Elevate Your Lifestyle</p>
       </motion.div>
 
       <Swiper
         ref={swiperRef}
-        modules={[EffectFade, Navigation, Pagination]}
+        modules={[EffectFade, Navigation, Pagination, Autoplay]}
         effect="fade"
         speed={1000}
         navigation={{
@@ -75,6 +75,10 @@ export function Carousel() {
             return `<span class="${className} w-3 h-3"></span>`;
           }
         }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         loop={true}
         className="h-full"
       >
@@ -82,9 +86,9 @@ export function Carousel() {
           <SwiperSlide key={index}>
             <div className="relative h-full">
               <div 
-                className="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-7000"
+                className="absolute inset-0 bg-cover bg-center transform scale-105"
                 style={{ 
-                  backgroundImage: `url(${image.url})`,
+                  backgroundImage: `url(${image.image})`,
                   animation: 'slowZoom 7s ease-in-out infinite alternate'
                 }}
               />

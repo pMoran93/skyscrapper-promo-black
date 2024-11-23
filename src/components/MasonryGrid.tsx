@@ -1,83 +1,134 @@
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
   {
-    url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
-    title: 'Mountain Vista',
-    size: 'large'
+    image: '/src/assets/interior_1.png',
+    title: "Grand Reception Lobby",
+    description: "Experience luxury from the moment you enter with our 24/7 concierge service and elegant waiting areas"
   },
   {
-    url: 'https://images.unsplash.com/photo-1447684808650-354ae64db5b8',
-    title: 'Ocean Dreams',
-    size: 'small'
+    image: '/src/assets/interior_2.png',
+    title: "Infinity Pool",
+    description: "Relax and unwind in our stunning rooftop pool with panoramic city views"
   },
   {
-    url: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05',
-    title: 'Forest Light',
-    size: 'medium'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e',
-    title: 'Nature\'s Path',
-    size: 'large'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e',
-    title: 'Mountain Lake',
-    size: 'medium'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
-    title: 'Sunset Peak',
-    size: 'small'
+    image: '/src/assets/interior_3.png',
+    title: "State-of-the-art Gym",
+    description: "Stay fit and healthy in our fully equipped fitness center featuring premium equipment"
   }
 ];
 
 export function MasonryGrid() {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
   return (
-    <section className="py-24 px-8 bg-black">
-      <motion.h2 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl font-bold text-center mb-16"
-      >
-        Fragments of Beauty
-      </motion.h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {images.map((image, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
-            className={`relative overflow-hidden rounded-lg ${
-              image.size === 'large' ? 'row-span-2' :
-              image.size === 'medium' ? 'row-span-1' : ''
-            }`}
-          >
-            <div className="group aspect-w-3 aspect-h-4 relative overflow-hidden">
-              <img
-                src={image.url}
-                alt={image.title}
-                className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute bottom-8 left-8 right-8">
-                  <h3 className="text-2xl font-bold text-white mb-2 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                    {image.title}
-                  </h3>
-                  <button className="px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                    View Details
-                  </button>
+    <section className="min-h-screen bg-black justify-between py-24 px-4 flex flex-col">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl font-bold text-center mb-8 text-white"
+        >
+          Amenities
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl mx-auto text-center mb-16 space-y-6"
+        >
+          <p className="text-lg leading-relaxed text-white/80">
+            Experience a lifestyle like no other at Eterna Tower Nashville, with
+            amenities carefully designed for your comfort and enjoyment.
+          </p>
+          <p className="text-lg leading-relaxed text-white/80">
+            Exclusive access to a fully equipped gym, heated pool, coworking spaces and
+            entertainment areas.
+          </p>
+        </motion.div>
+        
+        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {images.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              className="relative group cursor-pointer"
+              onClick={() => setSelectedImage(index)}
+            >
+              <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg">
+                <img
+                  src={image.image}
+                  alt={image.title}
+                  className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-2xl font-bold text-white mb-2">{image.title}</h3>
+                  <p className="text-white/80">{image.description}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
+          ))}
+        </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl mx-auto text-center mt-16 space-y-6"
+        >
+          <p className="text-lg leading-relaxed text-white/80">
+            Our concierge team is available 24 hours a day to assist with
+            every detail of your daily life, guaranteeing exceptional service.
+          </p>
+        </motion.div>
+
+      {/* Fullscreen Modal */}
+      <AnimatePresence>
+        {selectedImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              className="relative max-w-7xl w-full max-h-[90vh] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={images[selectedImage].image}
+                alt={images[selectedImage].title}
+                className="w-full h-full object-contain rounded-lg"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                <h3 className="text-3xl font-bold text-white mb-2">
+                  {images[selectedImage].title}
+                </h3>
+                <p className="text-white/80 text-lg">
+                  {images[selectedImage].description}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 text-white/80 hover:text-white text-4xl"
+              >
+                ×
+              </button>
+            </motion.div>
           </motion.div>
-        ))}
-      </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
