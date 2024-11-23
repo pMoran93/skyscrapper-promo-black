@@ -6,15 +6,35 @@ import { SplitScreen } from '../components/SplitScreen';
 import { ImageTile } from '../components/ImageTile';
 import { OverlappingLayers } from '../components/OverlappingLayers';
 import { Contact } from '../components/Contact';
+import { FloatingNav } from '../components/FloatingNav';
 ---
 
-<Layout title="Photography Exposition">
+<Layout title="Eterna Tower Nashville">
   <main class="relative">
-    <Carousel client:load />
-    <MasonryGrid client:visible />
-    <SplitScreen client:visible />
-    <ImageTile client:visible />
-    <OverlappingLayers client:visible />
-    <Contact client:visible />
+    <section id="home">
+      <Carousel client:load />
+    </section>
+    
+    <section id="amenities">
+      <MasonryGrid client:visible />
+    </section>
+    
+    <section id="views">
+      <SplitScreen client:visible />
+    </section>
+    
+    <section id="availability">
+      <ImageTile client:visible />
+    </section>
+    
+    <section id="residences">
+      <OverlappingLayers client:visible />
+    </section>
+    
+    <section id="contact">
+      <Contact client:visible />
+    </section>
+
+    <FloatingNav client:load />
   </main>
 </Layout>
