@@ -14,5 +14,8 @@ export default defineConfig({
     ssr: {
       noExternal: ['masonry-layout']
     }
+  },
+  devToolbar: {
+    enabled: false
   }
 });

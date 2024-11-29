@@ -28,7 +28,7 @@ export function SplitScreen() {
 
   return (
     <div ref={containerRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen flex overflow-hidden">
+      <div className="sticky top-0 h-screen flex md:flex-row flex-col overflow-hidden">
         {panels.map((panel, i) => {
           const progress = useTransform(
             scrollYProgress,
@@ -39,7 +39,7 @@ export function SplitScreen() {
           return (
             <motion.div
               key={i}
-              className="relative w-1/3 h-full"
+              className="relative md:w-1/3 w-full h-full"
               style={{
                 opacity: progress
               }}
@@ -48,15 +48,15 @@ export function SplitScreen() {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${panel.image})` }}
               />
-              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute inset-0 bg-black/10" />
               <motion.div 
-                className="absolute bottom-20 left-10 right-10 text-white"
+                className="absolute bottom-10 left-10 right-10 text-white"
                 initial={{ y: 100, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <h3 className="text-4xl font-bold mb-4">{panel.title}</h3>
-                <p className="text-xl">{panel.description}</p>
+                <h3 className="md:text-4xl text-2xl font-bold mb-4">{panel.title}</h3>
+                <p className="md:text-xl text-sm">{panel.description}</p>
               </motion.div>
             </motion.div>
           );

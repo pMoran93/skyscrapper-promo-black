@@ -56,15 +56,15 @@ export const FloatingNav: React.FC = () => {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-1/4 right-8 -translate-y-1/2 z-50"
+      className="fixed md:top-1/4 md:right-8 md:-translate-y-1/2 bottom-0 left-0 right-0 md:left-auto md:bottom-auto z-50"
     >
-      <div className="flex flex-col items-center gap-3 p-3 rounded-full bg-black/30 backdrop-blur-lg border border-white/10 shadow-lg">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-purple-600/20 to-pink-600/20 blur-xl"></div>
+      <div className="flex md:flex-col items-center justify-center gap-3 p-3 rounded-t-xl md:rounded-full bg-black/30 backdrop-blur-lg border border-white/10 shadow-lg">
+        <div className="absolute inset-0 rounded-t-xl md:rounded-full bg-gradient-to-b from-purple-600/20 to-pink-600/20 blur-xl"></div>
         {navItems.map(({ id, initial }) => (
           <motion.button
             key={id}
             onClick={() => scrollToSection(id)}
-            className={`relative w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+            className={`relative w-10 h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-medium transition-all duration-300 ${
               activeSection === id
                 ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
                 : 'text-white/70 hover:text-white'
