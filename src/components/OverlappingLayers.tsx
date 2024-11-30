@@ -108,16 +108,20 @@ export function OverlappingLayers() {
         Residences
       </motion.h2>
 
-      <div className="max-w-7xl mx-auto relative h-[150vh]">
+      <div className="max-w-7xl mx-auto relative h-[100vh] md:h-[180vh] lg:h-[180vh] flex flex-col md:block">
         {layers.map((layer, index) => (
           <motion.div
           key={index}
           initial={{ opacity: 0, y: 100, rotate: 5 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           transition={{ duration: 0.8, delay: index * 0.2 }}
-          className="sticky top-[20vh] w-full max-w-2xl mx-auto"
+          className={`
+            relative md:sticky md:top-[20vh] w-full max-w-2xl mb-8 md:mb-0
+            ${index === 0 ? '' : 
+              index === 1 ? 'md:ml-[10%] md:-mt-[3vh]' : 
+              'md:ml-[20%] md:-mt-[6vh]'}
+          `}
           style={{
-            marginLeft: `${index * 10}%`,
             zIndex: layers.length - index
           }}
           onClick={() => handleLayerClick(index)}
@@ -130,9 +134,9 @@ export function OverlappingLayers() {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-8">
-                <h3 className="text-3xl font-bold mb-2">{layer.title}</h3>
-                <p className="text-lg text-gray-300">{layer.text}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 md:p-8">
+                <h3 className="text-xl md:text-3xl font-bold mb-1 md:mb-2">{layer.title}</h3>
+                <p className="text-sm md:text-lg text-gray-300">{layer.text}</p>
               </div>
             </div>
           </motion.div>
