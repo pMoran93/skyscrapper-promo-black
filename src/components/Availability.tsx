@@ -99,14 +99,14 @@ export function Availability() {
   });
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-8">
-      <div className="flex flex-col space-y-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="w-full max-w-4xl mx-auto p-4 md:p-8">
+      <div className="flex flex-col space-y-6 md:space-y-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {Object.entries({
             penthouse: "Penthouse",
             highFloor: "High Floor",
-            threeBedsPlus: "3+ Bedrooms",
-            available: "Available Now"
+            threeBedsPlus: "3+ Beds",
+            available: "Available"
           }).map(([key, label]) => (
             <div key={key} className="relative">
               <div 
@@ -116,7 +116,7 @@ export function Availability() {
               />
               <button
                 onClick={() => handleFilterChange(key as keyof typeof filters)}
-                className={`relative w-full p-3 rounded-md transition-colors ${
+                className={`relative w-full py-2 md:py-3 px-2 md:px-3 rounded-md transition-colors text-sm md:text-base ${
                   filters[key as keyof typeof filters] 
                     ? 'bg-black text-white' 
                     : 'bg-black/50 text-white/70 hover:text-white hover:bg-black'
@@ -128,7 +128,7 @@ export function Availability() {
           ))}
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           <AnimatePresence>
             {filteredUnits.map((unit, index) => (
               <motion.div
@@ -140,29 +140,45 @@ export function Availability() {
                 className="relative group"
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-1000"></div>
-                <div className="relative p-6 rounded-lg bg-black">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center text-white">
-                    <div>
-                      <h4 className="text-xl font-semibold">{unit.floor}</h4>
-                      <p className={`text-sm mt-2 ${unit.available ? 'text-green-400' : 'text-red-400'}`}>
-                        {unit.available ? 'Available' : 'Reserved'}
-                      </p>
+                <div className="relative p-4 md:p-6 rounded-lg bg-black">
+                  <div className="flex flex-col md:grid md:grid-cols-4 gap-4 items-start md:items-center text-white">
+                    {/* Floor and Availability */}
+                    <div className="w-full flex justify-between items-center md:block">
+                      <div>
+                        <h4 className="text-lg md:text-xl font-semibold">{unit.floor}</h4>
+                        <p className={`text-sm mt-1 md:mt-2 ${unit.available ? 'text-green-400' : 'text-red-400'}`}>
+                          {unit.available ? 'Available' : 'Reserved'}
+                        </p>
+                      </div>
+                      <p className="text-xl md:text-2xl font-bold md:hidden">{unit.price}</p>
                     </div>
-                    <div className="text-center">
-                      <p className="text-white/80">{unit.bedrooms} Bedrooms</p>
-                      <p className="text-white/80 mt-1">{unit.sqft} sq ft</p>
+
+                    {/* Beds and Sqft */}
+                    <div className="w-full flex justify-between items-center">
+                      <div className="flex items-center gap-1">
+                        <span className="text-white/80">{unit.bedrooms}</span>
+                        <span className="text-white/80">Beds</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span className="text-white/80">{unit.sqft}</span>
+                        <span className="text-white/80">sq ft</span>
+                      </div>
                     </div>
-                    <div className="text-center">
+
+                    {/* Price - Hidden on mobile */}
+                    <div className="hidden md:block text-center">
                       <p className="text-2xl font-bold">{unit.price}</p>
                     </div>
-                    <div className="flex justify-end">
+
+                    {/* View Details Button */}
+                    <div className="w-full flex justify-center md:justify-end">
                       <div className="relative group/button">
                         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-md opacity-0 group-hover/button:opacity-75 blur transition duration-1000"></div>
                         <a
-                        href={brochurePdf}
-                        download="luxury-residences-brochure.pdf"
-                        className="relative px-4 py-2 bg-black text-white rounded-md transition-colors">
-                        View Details
+                          href={brochurePdf}
+                          download="luxury-residences-brochure.pdf"
+                          className="relative px-4 py-2 bg-black text-white rounded-md transition-colors text-sm md:text-base w-full text-center">
+                          View Details
                         </a>
                       </div>
                     </div>
@@ -175,7 +191,7 @@ export function Availability() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center text-white/70 py-8"
+              className="text-center text-white/70 py-6 md:py-8"
             >
               No units match your selected filters
             </motion.div>
@@ -186,10 +202,10 @@ export function Availability() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mt-24"
+          className="mt-16 md:mt-24"
         >
-          <h3 className="text-3xl font-bold text-center text-white mb-12">Our Partners</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-8 md:mb-12">Our Partners</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {enterprises.map((enterprise, index) => {
               const Icon = enterprise.icon;
               return (
@@ -201,13 +217,13 @@ export function Availability() {
                   className="relative group h-full"
                 >
                   <div className="absolute -inset-1 rounded-lg opacity-50 group-hover:opacity-75 blur transition duration-1000"></div>
-                  <div className="relative p-4 rounded-lg bg-black h-full">
+                  <div className="relative p-3 md:p-4 rounded-lg bg-black h-full">
                     <div className="flex flex-col items-center text-center space-y-2 h-full justify-center">
                       <div className="p-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full">
-                        <Icon className="w-6 h-6 text-white" />
+                        <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">{enterprise.name}</h4>
-                      <p className="text-sm text-white/80">{enterprise.description}</p>
+                      <h4 className="text-base md:text-lg font-semibold text-white">{enterprise.name}</h4>
+                      <p className="text-xs md:text-sm text-white/80">{enterprise.description}</p>
                     </div>
                   </div>
                 </motion.div>
