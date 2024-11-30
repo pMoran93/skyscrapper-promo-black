@@ -17,7 +17,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-photo-dark text-photo-light">
+  <body class="bg-photo-dark text-photo-light overflow-x-hidden m-0 p-0">
     <slot />
   </body>
 </html>
@@ -33,7 +33,13 @@ const { title } = Astro.props;
   html {
     font-family: 'Inter', system-ui, sans-serif;
     background: #0a0a0a;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {

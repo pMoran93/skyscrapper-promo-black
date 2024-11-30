@@ -26,9 +26,27 @@ export function SplitScreen() {
     offset: ["start start", "end end"]
   });
 
+  const containerStyle = useTransform(
+    scrollYProgress,
+    [0, 0.95, 0.95],
+    ["fixed", "fixed", "absolute"]
+  );
+
+  const marginTop = useTransform(
+    scrollYProgress,
+    [0, 0.95, 0.95],
+    ["0vh", "0vh", "200vh"]
+  );
+
   return (
     <div ref={containerRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen flex md:flex-row flex-col overflow-hidden">
+      <motion.div 
+        className="top-0 left-0 right-0 h-screen flex md:flex-row flex-col overflow-hidden"
+        style={{ 
+          position: containerStyle,
+          marginTop: marginTop
+        }}
+      >
         {panels.map((panel, i) => {
           const progress = useTransform(
             scrollYProgress,
@@ -61,7 +79,7 @@ export function SplitScreen() {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 }

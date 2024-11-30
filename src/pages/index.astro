@@ -10,8 +10,8 @@ import { FloatingNav } from '../components/FloatingNav';
 ---
 
 <Layout title="Eterna Tower Nashville">
-  <main class="relative">
-    <section id="home">
+  <main class="relative w-screen overflow-x-hidden">
+    <section id="home" class="w-screen">
       <Carousel client:load />
     </section>
     
@@ -19,7 +19,7 @@ import { FloatingNav } from '../components/FloatingNav';
       <MasonryGrid client:visible />
     </section>
     
-    <section id="views">
+    <section id="views" class="w-full">
       <SplitScreen client:visible />
     </section>
     
