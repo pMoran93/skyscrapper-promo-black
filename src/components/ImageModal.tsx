@@ -27,12 +27,11 @@ function MobileImageView({ image, title }: Image) {
       const img = imageRef.current;
       const container = containerRef.current;
       
-      const scale = 1.5;
-      const scaledWidth = img.offsetWidth * scale;
-      const scaledHeight = img.offsetHeight * scale;
+      const scaledWidth = img.offsetWidth * 2.5;
+      const scaledHeight = img.offsetHeight * 1;
       
-      const xConstraint = Math.max(0, (scaledWidth - container.offsetWidth) / 1.5);
-      const yConstraint = Math.max(0, (scaledHeight - container.offsetHeight) / 1.5);
+      const xConstraint = Math.max(0, (scaledWidth - container.offsetWidth) / 2.5);
+      const yConstraint = Math.max(0, (scaledHeight - container.offsetHeight) / 1);
 
       setConstraints({
         left: -xConstraint,
@@ -44,7 +43,7 @@ function MobileImageView({ image, title }: Image) {
 
     const img = imageRef.current;
     if (img) {
-      img.style.transform = 'scale(1.5)';
+      img.style.transform = 'scaleX(2.5) scaleY(1)';
       img.addEventListener('load', updateConstraints);
       window.addEventListener('resize', updateConstraints);
       updateConstraints();
@@ -61,7 +60,8 @@ function MobileImageView({ image, title }: Image) {
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full flex items-center justify-center overflow-hidden"
+      //Needs padding and 60%
+      className="w-full h-full justify-center overflow-hidden"
     >
       <motion.div
         className="relative w-full h-full"
@@ -73,7 +73,7 @@ function MobileImageView({ image, title }: Image) {
           ref={imageRef}
           src={image}
           alt={title}
-          className="w-full h-full object-cover touch-none select-none origin-center"
+          className="w-full h-full touch-none select-none origin-center"
         />
       </motion.div>
     </div>
@@ -194,7 +194,7 @@ export function ImageModal({ images, selectedIndex, onClose, onNavigate }: Image
           </div>
         </div>
 
-        <div className="w-full h-full" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-top h-[75vh] pt-[12vh]" onClick={(e) => e.stopPropagation()}>
           {isMobile ? (
             <MobileImageView {...currentImage} />
           ) : (
