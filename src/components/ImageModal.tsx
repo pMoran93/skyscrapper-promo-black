@@ -119,7 +119,7 @@ export function ImageModal({ images, selectedIndex, onClose, onNavigate }: Image
         onClick={onClose}
       >
         {/* Mobile Controls */}
-        <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-30">
+        <div className="md:hidden fixed top-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-30">
           <div className="relative group">
             <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-50 group-hover:opacity-75 blur transition duration-1000"></div>
             <button
