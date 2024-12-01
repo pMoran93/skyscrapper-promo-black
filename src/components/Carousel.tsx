@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import logo from '../assets/icons/logo_eterna.svg';
 
 const images = [
   {
@@ -54,7 +55,8 @@ export function Carousel() {
         animate={{ opacity: 1 }}
         className="absolute top-4 md:top-8 left-4 md:left-8 z-20 px-4 md:px-0"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 flex items-center gap-4">
+          <img src='src/assets/icons/logo_eterna.svg' alt="Eterna Logo" className="h-10 md:h-12 lg:h-14 brightness-0 invert" />
           Eterna Tower Nashville
         </h1>
       </motion.div>
