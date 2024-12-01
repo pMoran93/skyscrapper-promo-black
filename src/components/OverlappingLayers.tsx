@@ -103,7 +103,7 @@ export function OverlappingLayers() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-5xl font-bold text-center mb-24"
+        className="text-3xl md:text-5xl font-bold text-center mb-8 md:mb-24"
       >
         Residences
       </motion.h2>

@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import { Carousel } from '../components/Carousel';
 import { MasonryGrid } from '../components/MasonryGrid';
 import { SplitScreen } from '../components/SplitScreen';
-import { ImageTile } from '../components/ImageTile';
 import { OverlappingLayers } from '../components/OverlappingLayers';
 import { Contact } from '../components/Contact';
 import { FloatingNav } from '../components/FloatingNav';
+import { Availability } from '../components/Availability';
 ---
 
 <Layout title="Eterna Tower Nashville">
@@ -24,7 +24,7 @@ import { FloatingNav } from '../components/FloatingNav';
     </section>
     
     <section id="availability">
-      <ImageTile client:visible />
+      <Availability client:visible />
     </section>
     
     <section id="residences">
