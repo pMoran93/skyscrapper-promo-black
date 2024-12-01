@@ -108,7 +108,7 @@ export function OverlappingLayers() {
         Residences
       </motion.h2>
 
-      <div className="max-w-7xl mx-auto relative h-[100vh] md:h-[180vh] lg:h-[180vh] flex flex-col md:block">
+      <div className="max-w-7xl mx-auto relative h-[120vh] min-[500px]:h-[180vh] lg:h-[180vh] flex flex-col md:block">
         {layers.map((layer, index) => (
           <motion.div
           key={index}

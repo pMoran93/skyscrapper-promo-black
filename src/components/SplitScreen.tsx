@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const panels = [
@@ -35,16 +35,17 @@ export function SplitScreen() {
   const marginTop = useTransform(
     scrollYProgress,
     [0, 0.95, 0.95],
-    ["0vh", "0vh", "200vh"]
+    ["0vh", "0vh", "100vh"]
   );
 
   return (
-    <div ref={containerRef} className="relative h-[300vh]">
+    <div ref={containerRef} className="relative h-[200vh] z-10">
       <motion.div 
         className="top-0 left-0 right-0 h-screen flex md:flex-row flex-col overflow-hidden"
         style={{ 
           position: containerStyle,
-          marginTop: marginTop
+          marginTop: marginTop,
+          zIndex: 10
         }}
       >
         {panels.map((panel, i) => {

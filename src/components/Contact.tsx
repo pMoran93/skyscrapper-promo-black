@@ -206,7 +206,7 @@ export const Contact: React.FC = () => {
       </div>
 
       {/* Copyright */}
-      <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 pb-12 md:pb-8 border-t border-gray-800">
         <p className="text-center text-gray-500">
           {new Date().getFullYear()} Black Navy - Eterna Tower Nashville - All rights reserved.
         </p>

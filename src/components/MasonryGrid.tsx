@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { ImageModal } from './ImageModal';
 
 const images = [
@@ -25,7 +24,7 @@ export function MasonryGrid() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   return (
-    <section className="min-h-screen bg-black justify-between py-24 px-4 flex flex-col">
+    <section className="relative min-h-screen bg-black justify-between py-24 px-4 flex flex-col z-50">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
