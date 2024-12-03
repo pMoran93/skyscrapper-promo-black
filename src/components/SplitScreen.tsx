@@ -3,17 +3,17 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const panels = [
   {
-    image: '/src/assets/building_6.png',
+    image: '/building_6.png',
     title: "See",
     description: "See Nashville like never before from the heights of Eterna Tower Nashville"
   },
   {
-    image: '/src/assets/building_1.png',
+    image: '/building_1.png',
     title: "Through Our",
     description: "With panoramic windows in each residence, enjoy spectacular views that encompass the city's main points of interest, the Cumberland River and beyond"
   },
   {
-    image: '/src/assets/building_4.png',
+    image: '/building_4.png',
     title: "View",
     description: "This skyscraper redefines perspectives, making every sunrise and sunset a unique experience"
   }

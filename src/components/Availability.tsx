@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PenTool, Building, Camera, Palette } from 'lucide-react';
-import brochurePdf from '../assets/pdf/test.pdf';
 
 interface Unit {
   floor: string;
@@ -203,7 +202,7 @@ export function Availability() {
                         <div className="relative group/button">
                           <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-md opacity-0 group-hover/button:opacity-75 blur transition duration-1000"></div>
                           <a
-                            href={brochurePdf}
+                            href="/pdf/test.pdf"
                             download="luxury-residences-brochure.pdf"
                             className="relative px-4 py-2 bg-black text-white rounded-md transition-colors text-sm md:text-base w-full text-center">
                             View Details

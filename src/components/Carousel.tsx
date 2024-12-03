@@ -6,23 +6,22 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import logo from '../assets/icons/logo_eterna.svg';
 
 const images = [
   {
-    image: '/src/assets/building_5.png',
+    image: '/building_5.png',
     title: "Luxury Living Redefined",
     description: "Experience unparalleled elegance in the heart of the city",
     location: "Downtown Financial District"
   },
   {
-    image: '/src/assets/building_4.png',
+    image: '/building_4.png',
     title: "Sky-High Sophistication",
     description: "Where luxury meets breathtaking panoramic views",
     location: "Prime Urban Location"
   },
   {
-    image: '/src/assets/building_2.png',
+    image: '/building_2.png',
     title: "Elite Urban Residences",
     description: "Premium apartments designed for discerning professionals",
     location: "Business District"
@@ -56,7 +55,7 @@ export function Carousel() {
         className="absolute top-4 md:top-8 left-4 md:left-8 z-20 px-4 md:px-0"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 flex items-center gap-4">
-          <img src='src/assets/icons/logo_eterna.svg' alt="Eterna Logo" className="h-10 md:h-12 lg:h-14 brightness-0 invert" />
+          <img src='/icons/logo_eterna.svg' alt="Eterna Logo" className="h-10 md:h-12 lg:h-14 brightness-0 invert" />
           Eterna Tower Nashville
         </h1>
       </motion.div>

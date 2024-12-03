@@ -17,61 +17,61 @@ interface Layer {
 
 const layers: Layer[] = [
   {
-    mainImage: '/src/assets/interior_4.png',
+    mainImage: '/interior_4.png',
     title: 'Living Room',
     text: 'Discover the essence of modern luxury in every corner of Eterna Tower Nashville, located at 1201 Demonbreun Street, Nashville, TN 37203',
     images: [
       {
-        image: '/src/assets/interior_4.png',
+        image: '/interior_4.png',
         title: 'Living Room - Main View',
         description: 'Spacious living area with floor-to-ceiling windows'
       },
       {
-        image: '/src/assets/interior_5.png',
+        image: '/interior_5.png',
         title: 'Living Room - Lounge',
         description: 'Elegant lounge area perfect for entertaining'
       },
       {
-        image: '/src/assets/interior_6.png',
+        image: '/interior_6.png',
         title: 'Living Room - Evening',
         description: 'Stunning city views at sunset'
       },
       {
-        image: '/src/assets/interior_7.png',
+        image: '/interior_7.png',
         title: 'Living Room - Detail',
         description: 'Premium finishes and modern design elements'
       }
     ]
   },
   {
-    mainImage: '/src/assets/interior_8.png',
+    mainImage: '/interior_8.png',
     title: 'Master Bedroom',
     text: 'Designed to redefine comfort and exclusivity, our residences offer spacious spaces, top quality finishes and unparalleled views of the Nashville skyline',
     images: [
       {
-        image: '/src/assets/interior_8.png',
+        image: '/interior_8.png',
         title: 'Master Bedroom - Overview',
         description: 'Luxurious master suite with panoramic views'
       },
       {
-        image: '/src/assets/interior_9.png',
+        image: '/interior_9.png',
         title: 'Master Bedroom - Evening',
         description: 'Perfect ambiance for relaxation with city lights'
       }
     ]
   },
   {
-    mainImage: '/src/assets/interior_10.png',
+    mainImage: '/interior_10.png',
     title: 'Bathroom',
     text: 'From cozy studios to majestic penthouses, these residences adapt to the highest standards of living contemporary',
     images: [
       {
-        image: '/src/assets/interior_10.png',
+        image: '/interior_10.png',
         title: 'Bathroom - Main View',
         description: 'Spa-like master bathroom with premium fixtures'
       },
       {
-        image: '/src/assets/interior_11.png',
+        image: '/interior_11.png',
         title: 'Bathroom - Detail',
         description: 'Elegant finishes and modern amenities'
       }

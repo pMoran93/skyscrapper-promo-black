@@ -4,17 +4,17 @@ import { ImageModal } from './ImageModal';
 
 const images = [
   {
-    image: '/src/assets/interior_1.png',
+    image: '/interior_1.png',
     title: "Grand Reception Lobby",
     description: "Experience luxury from the moment you enter with our 24/7 concierge service and elegant waiting areas"
   },
   {
-    image: '/src/assets/interior_2.png',
+    image: '/interior_2.png',
     title: "Infinity Pool",
     description: "Relax and unwind in our stunning rooftop pool with panoramic city views"
   },
   {
-    image: '/src/assets/interior_3.png',
+    image: '/interior_3.png',
     title: "State-of-the-art Gym",
     description: "Stay fit and healthy in our fully equipped fitness center featuring premium equipment"
   }
