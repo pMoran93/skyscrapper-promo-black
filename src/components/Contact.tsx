@@ -87,7 +87,9 @@ export const Contact: React.FC = () => {
         subject: `Eterna Tower - ${formData.floorType} Request`
       };
 
-      const response = await fetch('http://localhost:3000/send-email', {
+      const backendUrl = import.meta.env.PUBLIC_BACKEND_URL;
+
+      const response = await fetch(`${backendUrl}/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
