@@ -300,7 +300,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-300">info@blacknavyrealstate.com</span>
+                  <span className="text-gray-300">blacknavyrealestate@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-gray-400" />
