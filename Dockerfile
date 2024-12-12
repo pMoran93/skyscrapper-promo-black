@@ -22,6 +22,9 @@ FROM nginx:stable-alpine
 # Copy the built Astro app to the Nginx web directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Expose the default Nginx port
 EXPOSE 80
 

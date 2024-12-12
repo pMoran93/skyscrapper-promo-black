@@ -16,6 +16,10 @@ const { title } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <link rel="preload" href="/building_5.png" as="image" type="image/png" />
+    <link rel="preload" href="/building_4.png" as="image" type="image/png" />
+    <link rel="preload" href="/building_2.png" as="image" type="image/png" />
   </head>
   <body class="bg-photo-dark text-photo-light overflow-x-hidden m-0 p-0">
     <slot />

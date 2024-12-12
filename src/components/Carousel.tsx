@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -49,7 +49,7 @@ export function Carousel() {
 
   return (
     <section className="h-[100svh] relative overflow-hidden bg-black">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="absolute top-4 md:top-8 left-4 md:left-8 z-20 px-4 md:px-0"
