@@ -1,0 +1,75 @@
+name: Deploy React App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Build React App
+        run: |
+          export VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }}
+          npm run build
+
+      - name: Define Image Tag
+        id: vars
+        run: echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
+
+      - name: Build Docker Image for amd64
+        run: |
+          docker buildx build --platform linux/amd64 -t eterna-tower-image:${{ env.IMAGE_TAG }} --load .
+
+      - name: Save Docker Image to Tar file
+        run: |
+          docker save -o ${{ github.workspace }}/eterna-tower-image-${{ env.IMAGE_TAG }}.tar eterna-tower-image:${{ env.IMAGE_TAG }}
+
+      - name: Set permissions for Docker Tar file
+        run: chmod 644 ${{ github.workspace }}/eterna-tower-image-${{ env.IMAGE_TAG }}.tar
+
+      - name: Transfer Docker Tar File to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          source: "${{ github.workspace }}/eterna-tower-image-${{ env.IMAGE_TAG }}.tar"
+          target: "~/blacknavy"
+
+      - name: Load Docker Image and Restart Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            # Load the Docker image from the tar file
+            docker load -i ~/blacknavy/github/workspace/eterna-tower-image-${{ env.IMAGE_TAG }}.tar
+
+            # Stop the running container if it exists
+            docker ps -q --filter 'name=eterna-tower' | xargs -r docker stop
+
+            cd ~/blacknavy
+            # Update docker-compose file with the new tag
+            sed -i "s|image: eterna-tower-image:.*|image: eterna-tower-image:${{ env.IMAGE_TAG }}|" docker-compose.yml
+            
+            # Use docker-compose to restart the container with the new image
+            docker-compose up -d --no-deps eterna-tower
